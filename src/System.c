@@ -2,6 +2,13 @@
 #include "System.h"
 #include "ErrorHandling.h"
 
+void System_append(System_t *a, System_t *b)
+{
+    while (a->next)
+        a = a->next;
+    a->next = b;
+}
+
 System_t *System_push(System_t *system, int (*node)(Object_t *obj, ObjectList_t * list, float deltaTime))
 {
     System_t *newNode = malloc(sizeof(System_t));
@@ -16,7 +23,7 @@ System_t *System_push(System_t *system, int (*node)(Object_t *obj, ObjectList_t 
         system = newNode;
     }
     else {
-        system->next = newNode;
+        System_append(system, newNode);
     }
     return system;
 }

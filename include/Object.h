@@ -6,7 +6,10 @@
 typedef struct {
     Vector3 pos;
     Vector3 velocity;
+    Vector3 force;
+    Vector3 acceleration;
     float radius;
+    float mass;
     Color color;
 } Object_t;
 

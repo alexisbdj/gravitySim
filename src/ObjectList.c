@@ -2,6 +2,13 @@
 #include "ObjectList.h"
 #include "ErrorHandling.h"
 
+void ObjectList_append(ObjectList_t *a, ObjectList_t *b)
+{
+    while (a->next)
+        a = a->next;
+    a->next = b;
+}
+
 ObjectList_t *ObjectList_push(ObjectList_t *list, Object_t *element)
 {
     ObjectList_t *newNode = malloc(sizeof(ObjectList_t));
@@ -14,7 +21,7 @@ ObjectList_t *ObjectList_push(ObjectList_t *list, Object_t *element)
         list = newNode;
     }
     else {
-        list->next = newNode;
+        ObjectList_append(list, newNode);
     }
     return list;
 }

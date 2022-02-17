@@ -14,6 +14,10 @@ Object_t *Object_create(Vector3 pos, float radius, Color color)
     obj->pos = pos;
     obj->radius = radius;
     obj->color = color;
+    obj->velocity = (Vector3){0, 0, 0};
+    obj->force = (Vector3){0, 0, 0};
+    obj->acceleration = (Vector3){0, 0, 0};
+    obj->mass = 30;
 
     return obj;
 }
