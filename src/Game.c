@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "ErrorHandling.h"
 #include "Game.h"
+#include "SystemList.h"
 
 const int screenWidth = 1200;
 const int screenHeight = 800;
@@ -33,6 +34,16 @@ Game_t *Game_create()
         return NULL;
     }
 
+    game->objectList->next->element->velocity.z = 2;
+
+    game->system = System_push(NULL, applyVelocity);
+    if (game->system == NULL) {
+        printError("System init failed");
+        ObjectList_destroy(game->objectList);
+        free(game);
+        return NULL;
+    }
+
     game->cam3d = (Camera3D){0};
     game->cam3d.position = (Vector3){ 0.0f, 6.0f, 20.0f };
     game->cam3d.target = (Vector3){ 0.0f, 0.0f, 0.0f };
@@ -51,6 +62,9 @@ int Game_run(Game_t *game)
 {
     while (!WindowShouldClose())
     {
+        float deltaTime = GetFrameTime();
+        System_processFrame(game->system, game->objectList, deltaTime);
+
         BeginDrawing();
         ClearBackground(BLACK);
         BeginMode3D(game->cam3d);

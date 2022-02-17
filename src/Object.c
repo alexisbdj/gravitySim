@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "Object.h"
+#include "ObjectList.h"
 #include "ErrorHandling.h"
 
 Object_t *Object_create(Vector3 pos, float radius, Color color)

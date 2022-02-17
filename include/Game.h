@@ -3,10 +3,12 @@
 
 #include <raylib.h>
 #include "ObjectList.h"
+#include "System.h"
 
 typedef struct {
     Camera3D cam3d;
     ObjectList_t *objectList;
+    System_t *system;
 } Game_t;
 
 Game_t *Game_create();

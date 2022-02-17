@@ -5,6 +5,7 @@
 
 typedef struct {
     Vector3 pos;
+    Vector3 velocity;
     float radius;
     Color color;
 } Object_t;

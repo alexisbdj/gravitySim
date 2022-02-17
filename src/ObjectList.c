@@ -9,6 +9,7 @@ ObjectList_t *ObjectList_push(ObjectList_t *list, Object_t *element)
         printError("malloc failed");
     }
     newNode->element = element;
+    newNode->next = NULL;
     if (list == NULL) {
         list = newNode;
     }
