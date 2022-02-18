@@ -88,8 +88,8 @@ Game_t *Game_create()
         return NULL;
     }
 
-    game->objectList->next->element->velocity.z = -4;
-    game->objectList->element->mass = 920;
+    game->objectList->next->element->velocity.z = -15;
+    game->objectList->element->mass = 3920;
     game->cam3d = (Camera3D){0};
     game->cam3d.position = (Vector3){ 0.0f, 6.0f, 20.0f };
     // game->cam3d.position = (Vector3){ 0.0f, 55.0f, 1.0f };

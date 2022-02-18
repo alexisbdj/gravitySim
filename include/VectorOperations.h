@@ -11,5 +11,7 @@ Vector3 Vector3_normalize(const Vector3 a, float length);
 
 
 Vector3 getDirection(const Vector3 a, const Vector3 b);
+float getLength(const Vector3 a);
+float getDistance(const Vector3 a, const Vector3 b);
 
 #endif
