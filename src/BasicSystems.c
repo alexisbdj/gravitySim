@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "SystemList.h"
 
 int applyVelocity(Object_t * obj, __attribute__((unused)) ObjectList_t *list, float deltaTime)
@@ -13,12 +12,6 @@ int applyVelocity(Object_t * obj, __attribute__((unused)) ObjectList_t *list, fl
 int resetForce(Object_t * obj, __attribute__((unused)) ObjectList_t *list, __attribute__((unused)) float deltaTime)
 {
     obj->force = (Vector3){0, 0, 0};
-    return 0;
-}
-
-int calculateAcceleration(Object_t * obj, __attribute__((unused)) ObjectList_t *list, __attribute__((unused)) float deltaTime)
-{
-    obj->acceleration = (Vector3){0, 0, 0};
     return 0;
 }
 

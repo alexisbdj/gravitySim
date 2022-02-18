@@ -8,8 +8,8 @@ typedef struct {
     Vector3 velocity;
     Vector3 force;
     Vector3 acceleration;
-    float radius;
-    float mass;
+    float radius;   //m
+    float mass;     //kg
     Color color;
 } Object_t;
 

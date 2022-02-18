@@ -7,12 +7,20 @@
 const int screenWidth = 1200;
 const int screenHeight = 800;
 
+//TODO initialiser ça à partir d'une liste
 static System_t *Game_initSystem()
 {
     System_t *system = System_push(NULL, resetForce);
     System_t *origin = system;
     if (system == NULL) {
         printError("System init failed");
+        return NULL;
+    }
+
+    system = System_push(system, applyGravity);
+    if (system == NULL) {
+        printError("System node add failed");
+        System_destroy(origin);
         return NULL;
     }
 
@@ -80,10 +88,11 @@ Game_t *Game_create()
         return NULL;
     }
 
-    game->objectList->next->element->velocity.z = -2;
+    game->objectList->next->element->velocity.z = -4;
+    game->objectList->element->mass = 920;
     game->cam3d = (Camera3D){0};
-    // game->cam3d.position = (Vector3){ 0.0f, 6.0f, 20.0f };
-    game->cam3d.position = (Vector3){ 0.0f, 55.0f, 1.0f };
+    game->cam3d.position = (Vector3){ 0.0f, 6.0f, 20.0f };
+    // game->cam3d.position = (Vector3){ 0.0f, 55.0f, 1.0f };
     game->cam3d.target = (Vector3){ 0.0f, 0.0f, 0.0f };
     game->cam3d.up = (Vector3){ 0.0f, 1.0f, 0.0f };
     game->cam3d.fovy = 45.0f;

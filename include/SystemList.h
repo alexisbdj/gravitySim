@@ -7,5 +7,6 @@ int applyVelocity(Object_t * obj, ObjectList_t *list, float deltaTime);
 int resetForce(Object_t * obj, ObjectList_t *list, float deltaTime);
 int calculateAcceleration(Object_t * obj, ObjectList_t *list, float deltaTime);
 int applyAcceleration(Object_t * obj, ObjectList_t *list, float deltaTime);
+int applyGravity(Object_t * obj, ObjectList_t *list, float deltaTime);
 
 #endif

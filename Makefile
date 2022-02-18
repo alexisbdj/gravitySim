@@ -1,10 +1,14 @@
-SRC	=	./src/main.c			\
-		./src/Game.c			\
-		./src/ErrorHandling.c	\
-		./src/Object.c			\
-		./src/ObjectList.c		\
-		./src/System.c			\
-		./src/BasicSystems.c	\
+SRC	=	./src/main.c					\
+		./src/Game.c					\
+		./src/ErrorHandling.c			\
+		./src/Object.c					\
+		./src/ObjectList.c				\
+		./src/System.c					\
+		./src/BasicSystems.c			\
+		./src/ApplyGravity.c			\
+		./src/VectorOperations.c		\
+		./src/CalculateAcceleration.c	\
+		./src/Utils.c					\
 
 OBJ	=	$(SRC:.c=.o)
 
