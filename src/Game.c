@@ -151,5 +151,6 @@ void Game_destroy(Game_t *game)
 {
     ObjectList_destroy(game->objectList);
     System_destroy(game->system);
+    CloseWindow();
     free(game);
 }
