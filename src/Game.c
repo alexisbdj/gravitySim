@@ -1,9 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 #include "ErrorHandling.h"
 #include "Game.h"
 #include "SystemList.h"
 #include "Constants.h"
+#include "VectorOperations.h"
 
 const int screenWidth = 1200;
 const int screenHeight = 800;
@@ -57,21 +59,21 @@ static ObjectList_t *Game_initObjects()
         return NULL;
     }
     list = ObjectList_create(list, (Vector3){60,0,0}, 1.5, BLUE);
-    if (origin == NULL) {
+    if (list == NULL) {
         printError("ObjectList init failed");
         ObjectList_destroy(origin);
         return NULL;
     }
 
     list = ObjectList_create(list, (Vector3){-60,0,0}, 1.5, PURPLE);
-    if (origin == NULL) {
+    if (list == NULL) {
         printError("ObjectList init failed");
         ObjectList_destroy(origin);
         return NULL;
     }
 
     list = ObjectList_create(list, (Vector3){120,0,0}, 1.5, GREEN);
-    if (origin == NULL) {
+    if (list == NULL) {
         printError("ObjectList init failed");
         ObjectList_destroy(origin);
         return NULL;
@@ -105,13 +107,15 @@ Game_t *Game_create()
 
     game->objectList->next->element->velocity.z = -50;
     game->objectList->next->next->element->velocity.z = 50;
-    game->objectList->next->next->next->element->velocity.z = 35;
-    game->objectList->element->mass = 392000;
+    game->objectList->next->next->next->element->velocity = Vector3_normalize((Vector3){0, 1, 2}, sqrtf(((392e13 * Gconst) / (120))));
+    game->objectList->element->mass = 392e13;
     game->cam3d = (Camera3D){0};
     // game->cam3d.position = (Vector3){ 0.0f, 6.0f, 20.0f };
     // game->cam3d.position = (Vector3){ 0.0f, 55.0f, 1.0f };
     // game->cam3d.position = (Vector3){ 0.0f, 120.0f, 400.0f };
-    game->cam3d.position = (Vector3){ 0.0f, 255.0f, 1.0f };
+    // game->cam3d.position = (Vector3){ 0.0f, 255.0f, 1.0f };
+    game->cam3d.position = (Vector3){ 0.0f, 120.0f, 400.0f };
+    // game->cam3d.position = (Vector3){ 0.0f, 0, 400.0f };
     game->cam3d.target = (Vector3){ 0.0f, 0.0f, 0.0f };
     game->cam3d.up = (Vector3){ 0.0f, 1.0f, 0.0f };
     game->cam3d.fovy = 45.0f;
@@ -145,5 +149,7 @@ int Game_run(Game_t *game)
 
 void Game_destroy(Game_t *game)
 {
+    ObjectList_destroy(game->objectList);
+    System_destroy(game->system);
     free(game);
 }
