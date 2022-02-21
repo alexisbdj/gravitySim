@@ -1,0 +1,51 @@
+# Environment
+
+camera {
+    fovy = 45
+    up = +y
+    posX = 0
+    posY = 90
+    posZ = 300
+    targetX = 0
+    targetY = 0
+    targetZ = 0
+}
+
+
+# Objects
+
+sun {
+    posX = 0
+    posY = 0
+    posZ = 0
+    velocityX = 0
+    velocityY = 0
+    velocityZ = 0
+    radius = 6
+    mass = 392e13
+    color = YELLOW
+}
+
+a {
+    posX = 60
+    posY = 0
+    posZ = 0
+    velocityX = 0
+    velocityY = 0
+    velocityZ = 50
+    radius = 1.5
+    mass = 30
+    color = BLUE
+}
+
+b {
+    posX = 60
+    posY = 0
+    posZ = 0
+    velocityX = 0
+    velocityY = 0
+    velocityZ = -50
+    radius = 1.5
+    mass = 30
+    color = PURPLE
+}
