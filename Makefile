@@ -9,6 +9,7 @@ SRC	=	./src/main.c					\
 		./src/VectorOperations.c		\
 		./src/CalculateAcceleration.c	\
 		./src/Utils.c					\
+		./src/Constants.c
 
 OBJ	=	$(SRC:.c=.o)
 

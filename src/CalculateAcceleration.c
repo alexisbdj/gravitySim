@@ -6,6 +6,5 @@ int calculateAcceleration(Object_t * obj, __attribute__((unused)) ObjectList_t *
 {
     obj->acceleration = Vector3_division(obj->force, obj->mass);
 
-    printVectorValue(obj->acceleration);
     return 0;
 }

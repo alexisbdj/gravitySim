@@ -1,9 +1,9 @@
 #include "SystemList.h"
 #include "VectorOperations.h"
+#include "Constants.h"
 
 static float forceValue(Object_t * obj, Object_t * target)
 {
-    const float Gconst = 0.5;   //0.0000000000667430;
     float distance = getDistance(obj->pos, target->pos);
     return (Gconst * (obj->mass * target->mass)/(distance * distance));
 }

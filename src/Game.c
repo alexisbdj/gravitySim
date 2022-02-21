@@ -3,6 +3,7 @@
 #include "ErrorHandling.h"
 #include "Game.h"
 #include "SystemList.h"
+#include "Constants.h"
 
 const int screenWidth = 1200;
 const int screenHeight = 800;
@@ -49,13 +50,27 @@ static System_t *Game_initSystem()
 
 static ObjectList_t *Game_initObjects()
 {
-    ObjectList_t * list = ObjectList_create(NULL, (Vector3){0,0,0}, 2, YELLOW);
+    ObjectList_t * list = ObjectList_create(NULL, (Vector3){0,0,0}, 6, YELLOW);
     ObjectList_t * origin = list;
     if (origin == NULL) {
         printError("ObjectList init failed");
         return NULL;
     }
-    list = ObjectList_create(list, (Vector3){10,0,0}, 0.5, BLUE);
+    list = ObjectList_create(list, (Vector3){60,0,0}, 1.5, BLUE);
+    if (origin == NULL) {
+        printError("ObjectList init failed");
+        ObjectList_destroy(origin);
+        return NULL;
+    }
+
+    list = ObjectList_create(list, (Vector3){-60,0,0}, 1.5, PURPLE);
+    if (origin == NULL) {
+        printError("ObjectList init failed");
+        ObjectList_destroy(origin);
+        return NULL;
+    }
+
+    list = ObjectList_create(list, (Vector3){120,0,0}, 1.5, GREEN);
     if (origin == NULL) {
         printError("ObjectList init failed");
         ObjectList_destroy(origin);
@@ -88,11 +103,15 @@ Game_t *Game_create()
         return NULL;
     }
 
-    game->objectList->next->element->velocity.z = -15;
-    game->objectList->element->mass = 3920;
+    game->objectList->next->element->velocity.z = -50;
+    game->objectList->next->next->element->velocity.z = 50;
+    game->objectList->next->next->next->element->velocity.z = 35;
+    game->objectList->element->mass = 392000;
     game->cam3d = (Camera3D){0};
-    game->cam3d.position = (Vector3){ 0.0f, 6.0f, 20.0f };
+    // game->cam3d.position = (Vector3){ 0.0f, 6.0f, 20.0f };
     // game->cam3d.position = (Vector3){ 0.0f, 55.0f, 1.0f };
+    // game->cam3d.position = (Vector3){ 0.0f, 120.0f, 400.0f };
+    game->cam3d.position = (Vector3){ 0.0f, 255.0f, 1.0f };
     game->cam3d.target = (Vector3){ 0.0f, 0.0f, 0.0f };
     game->cam3d.up = (Vector3){ 0.0f, 1.0f, 0.0f };
     game->cam3d.fovy = 45.0f;
@@ -116,7 +135,7 @@ int Game_run(Game_t *game)
         ClearBackground(BLACK);
         BeginMode3D(game->cam3d);
         ObjectList_renderAll(game->objectList);
-        DrawGrid(40, 1.0f);
+        DrawGrid(80, 8.0f);
         EndMode3D();
         DrawFPS(10, 10);
         EndDrawing();
