@@ -6,6 +6,7 @@
 #include "SystemList.h"
 #include "Constants.h"
 #include "VectorOperations.h"
+#include "FileParsing.h"
 
 const int screenWidth = 1200;
 const int screenHeight = 800;
@@ -81,7 +82,7 @@ static ObjectList_t *Game_initObjects()
     return list;
 }
 
-Game_t *Game_create()
+Game_t *Game_create(const char * descriptorPath)
 {
     Game_t *game = malloc(sizeof(Game_t));
 
@@ -89,6 +90,16 @@ Game_t *Game_create()
         printError("malloc failed");
         return NULL;
     }
+
+    if (parseFile(descriptorPath, game) != 0) {
+        printError("failed to parse descriptor file");
+        return NULL;
+    }
+
+    game->objectList = NULL;
+    game->system = NULL;
+
+    return game;
 
     game->objectList = Game_initObjects(NULL, (Vector3){0,0,0}, 2, YELLOW);
     if (game->objectList == NULL) {
@@ -131,6 +142,7 @@ Game_t *Game_create()
 
 int Game_run(Game_t *game)
 {
+    (void)game;
     // while (!WindowShouldClose())
     // {
     //     float deltaTime = GetFrameTime();

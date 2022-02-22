@@ -9,7 +9,14 @@ SRC	=	./src/main.c					\
 		./src/VectorOperations.c		\
 		./src/CalculateAcceleration.c	\
 		./src/Utils.c					\
-		./src/Constants.c
+		./src/Constants.c				\
+		./src/FileParsing.c				\
+		./src/LinkedList.c				\
+		./src/ParserValidators.c		\
+		./src/FileReader.c				\
+		./src/addCharToWord.c			\
+		./src/runValidators.c			\
+		
 
 OBJ	=	$(SRC:.c=.o)
 

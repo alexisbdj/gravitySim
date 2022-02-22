@@ -9,9 +9,9 @@
     }
 
 #else
-    void printError_(const char * errorMessage, const char * functionName)
+    void printError_(const char * errorMessage)
     {
-        dprintf(2, "error: %s -> %s\n", errorMessage, functionName);
+        dprintf(2, "error: %s\n", errorMessage);
     }
 
 #endif

@@ -11,7 +11,7 @@ typedef struct {
     System_t *system;
 } Game_t;
 
-Game_t *Game_create();
+Game_t *Game_create(const char * descriptorPath);
 
 int Game_run(Game_t *game);
 

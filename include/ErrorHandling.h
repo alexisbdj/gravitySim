@@ -6,9 +6,9 @@
 
         #define printError(errorMessage) printError_(errorMessage, __FUNCTION__, __FILE__, __LINE__)
     #else
-        void printError_(const char * errorMessage, const char * functionName);
+        void printError_(const char * errorMessage);
 
-        #define printError(errorMessage) printError_(errorMessage, __FUNCTION__)
+        #define printError(errorMessage) printError_(errorMessage)
     #endif
 
 #endif

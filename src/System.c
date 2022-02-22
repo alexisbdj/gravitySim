@@ -30,6 +30,8 @@ System_t *System_push(System_t *system, int (*node)(Object_t *obj, ObjectList_t 
 
 void System_destroy(System_t *system)
 {
+    if (system == NULL)
+        return;
     if (system->next) {
         System_destroy(system->next);
     }

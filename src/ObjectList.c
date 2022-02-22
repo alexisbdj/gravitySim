@@ -44,6 +44,8 @@ ObjectList_t *ObjectList_create(ObjectList_t *list, Vector3 pos, float radius, C
 
 void ObjectList_destroy(ObjectList_t *list)
 {
+    if (list == NULL)
+        return;
     if (list->element)
         Object_destroy(list->element);
     if (list->next) {
