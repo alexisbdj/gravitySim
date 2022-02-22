@@ -10,6 +10,7 @@
 #include "LinkedList.h"
 #include "ParserValidators.h"
 #include "FileReader.h"
+#include "Utils.h"
 
 static int registerType(Parser_t * parser, size_t * currentN, TokenFlag flag, tkValidator validator)
 {
@@ -81,7 +82,7 @@ static int fparseFile(int fd, Game_t * game, Parser_t * parser)
             if (tmpFlag == 0) {
                 current[strlen(current) - 1] = 0;
                 if (strlen(current) > 0) {
-                    printf("%02x\t|\t\"%s\"\n", flag, current);
+                    printf("%s\t|\t\"%s\"\n", binaryFlag(flag), current);
                     restart = 1;
                 }
                 free(current);
