@@ -13,4 +13,6 @@ void LinkedList_destroy(LinkedList * list);
 
 void LinkedList_append(LinkedList *a, LinkedList *b);
 
+void LinkedList_foreach(LinkedList *a, void (*fnc)(void *a));
+
 #endif

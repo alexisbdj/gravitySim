@@ -18,7 +18,7 @@ LinkedList * LinkedList_push(LinkedList * list, void * data)
     else {
         LinkedList_append(list, node);
     }
-    return node;
+    return list;
 }
 
 LinkedList * LinkedList_forcePush(LinkedList * list, void * data)
@@ -47,4 +47,12 @@ void LinkedList_append(LinkedList *a, LinkedList *b)
     while (a->next)
         a = a->next;
     a->next = b;
+}
+
+void LinkedList_foreach(LinkedList *a, void (*fnc)(void *a))
+{
+    while (a) {
+        fnc(a->data);
+        a = a->next;
+    }
 }

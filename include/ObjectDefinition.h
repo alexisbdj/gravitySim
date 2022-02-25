@@ -2,6 +2,7 @@
 #define OBJECT_DEFINITION_H_
 
 #include "FileParsing.h"
+#include "LinkedList.h"
 
 typedef struct {
     char *name;
@@ -10,9 +11,9 @@ typedef struct {
 
 typedef struct {
     char * name;
-    ObjAttribute_t *attributes;
+    LinkedList *attributes;
 } ObjectDefinition_t;
 
-ObjectDefinition_t *tokensToObjectsDefinitions(int *objCount, const Token_t * tokens, int tokenCount);
+LinkedList *tokensToObjectsDefinitions(const Token_t * tokens, int tokenCount);
 
 #endif

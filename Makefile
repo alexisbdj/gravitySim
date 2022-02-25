@@ -24,7 +24,7 @@ OBJ	=	$(SRC:.c=.o)
 
 NAME	=	out
 
-CFLAGS	=	-I./include -Wall -Wextra -DDEBUG
+CFLAGS	=	-I./include -Wall -Wextra -DDEBUG -g
 
 CC	=	gcc
 

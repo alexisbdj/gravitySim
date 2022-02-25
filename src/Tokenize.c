@@ -39,7 +39,6 @@ Token_t * tokenize(Parser_t * parser, FileReader_t * reader, int *count)
             if (tmpFlag == 0) {
                 current[strlen(current) - 1] = 0;
                 if (strlen(current) > 0) {
-                    printf("%s\t|\t\"%s\"\n", binaryFlag(flag), current);
                     restart = 1;
                     tokenList = addToken(tokenList, count, current, flag);
                 }

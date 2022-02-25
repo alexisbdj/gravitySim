@@ -15,3 +15,14 @@ char * binaryFlag(TokenFlag flag)
     }
     return tmpBuffer;
 }
+
+static void printfAttribute(ObjAttribute_t *attr)
+{
+    printf("\t-> %s = %s (%s)\n", attr->name, attr->value->content, binaryFlag(attr->value->type));
+}
+
+void printObjDef(ObjectDefinition_t *a)
+{
+    printf("%s\n", a->name);
+    LinkedList_foreach(a->attributes, (void*)&printfAttribute);
+}

@@ -19,7 +19,6 @@ static int registerType(Parser_t * parser, size_t * currentN, TokenFlag flag, tk
         printError("can't register more flags");
         return 1;
     }
-    printf("register: %d\n", flag);
     parser->types[*currentN].value = flag;
     parser->types[*currentN].validator = validator;
     parser->totalValue += flag;
@@ -68,14 +67,19 @@ static int fparseFile(int fd, Game_t * game, Parser_t * parser)
     FileReader_t *reader = FileReader_create(fd, 255);
     Token_t *tokens = NULL;
     int tokenCount = 0;
-    int objCount = 0;
+    LinkedList *objDefs;
     if (reader == NULL) {
         printError("failed to init reader");
         return 1;
     }
-    tokens = tokenize(parser, reader, &tokenCount);
-    tokensToObjectsDefinitions(&objCount, tokens, tokenCount);
-    
+    tokens = tokenize(parser, reader, (void*)&tokenCount);
+    objDefs = tokensToObjectsDefinitions(tokens, tokenCount);
+    if (objDefs == NULL) {
+        return 1;
+    }
+
+    LinkedList_foreach(objDefs, (void*)&printObjDef);
+
     FileReader_destroy(reader);
     return 0;
 }
