@@ -13,7 +13,7 @@ char *addCharToWord(char * current, char c)
         current[0] = '\0';
     }
     int len = strlen(current);
-    if (((len + 1) % 25) == 0) {
+    if (((len + 1) % blockSize) == 0) {
         int nblocks = ((len + 1) / blockSize) + 1;
         current = realloc(current, sizeof(char) * (blockSize * (nblocks)));
         printf("allocation de %d blocs\n", nblocks);

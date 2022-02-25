@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include "stddef.h"
 #include "Game.h"
+#include "FileReader.h"
 
 typedef uint16_t TokenFlag;
 typedef int (*tkValidator)(const char * current);
@@ -36,11 +37,12 @@ typedef struct {
     TokenFlag totalValue;
 } Parser_t;
 
-
 int parseFile(const char * filePath, Game_t * game);
 
 char *addCharToWord(char * current, char c);
 
 TokenFlag runValidators(Parser_t * parser, char * current, TokenFlag flags);
+
+Token_t * tokenize(Parser_t * parser, FileReader_t * reader, int *count);
 
 #endif

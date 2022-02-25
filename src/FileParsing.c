@@ -11,6 +11,7 @@
 #include "ParserValidators.h"
 #include "FileReader.h"
 #include "Utils.h"
+#include "ObjectDefinition.h"
 
 static int registerType(Parser_t * parser, size_t * currentN, TokenFlag flag, tkValidator validator)
 {
@@ -65,37 +66,16 @@ static int fparseFile(int fd, Game_t * game, Parser_t * parser)
 {
     (void)game;
     FileReader_t *reader = FileReader_create(fd, 255);
+    Token_t *tokens = NULL;
+    int tokenCount = 0;
+    int objCount = 0;
     if (reader == NULL) {
         printError("failed to init reader");
         return 1;
     }
-    char * current = NULL;
-    char c;
-    TokenFlag flag = parser->totalValue;
-
-    while ((c = FileReader_getChar(reader)) != '\0') {
-        int restart = 0;
-        do {
-            restart = 0;
-            current = addCharToWord(current, c);
-            TokenFlag tmpFlag = runValidators(parser, current, flag);
-            if (tmpFlag == 0) {
-                current[strlen(current) - 1] = 0;
-                if (strlen(current) > 0) {
-                    printf("%s\t|\t\"%s\"\n", binaryFlag(flag), current);
-                    restart = 1;
-                }
-                free(current);
-                current = NULL;
-                flag = parser->totalValue;
-            }
-            else {
-                flag = tmpFlag;
-            }
-        } while(restart);
-    }
-
-    free(current);
+    tokens = tokenize(parser, reader, &tokenCount);
+    tokensToObjectsDefinitions(&objCount, tokens, tokenCount);
+    
     FileReader_destroy(reader);
     return 0;
 }
