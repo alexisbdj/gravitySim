@@ -37,7 +37,7 @@ int num_validator(const char * current)
 int float_validator(const char * current)
 {
     for (int i = 0; current[i]; i++) {
-        if ((current[i] < '0' || current[i] > '9') && current[i] != '.' && current[i] != 'e' && !(current[i] == '-' && i == 0)) {
+        if ((current[i] < '0' || current[i] > '9') && current[i] != '.' && current[i] != 'e' && current[i] != '-') {
             return 0;
         }
     }
