@@ -18,6 +18,12 @@ SRC	=	./src/main.c						\
 		./src/runValidators.c				\
 		./src/Tokenize.c					\
 		./src/tokensToObjectsDefinitions.c	\
+		./src/DescriptionToObjects.c		\
+		./src/ProcessCameraDef.c			\
+		./src/ProcessRegularDef.c			\
+		./src/Algorithm.c					\
+		./src/CameraAttributesBasics.c		\
+		./src/GetTokenValue.c				\
 		
 
 OBJ	=	$(SRC:.c=.o)

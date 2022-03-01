@@ -12,6 +12,7 @@
 #include "FileReader.h"
 #include "Utils.h"
 #include "ObjectDefinition.h"
+#include "DescriptionToObjects.h"
 
 static int registerType(Parser_t * parser, size_t * currentN, TokenFlag flag, tkValidator validator)
 {
@@ -61,9 +62,18 @@ static void cleanParser(Parser_t * parser)
     free(parser->types);
 }
 
+static void tokens_destroy(Token_t *tokens, int tokenCount)
+{
+    for (int i = 0; i < tokenCount; i++) {
+        free(tokens[i].content);
+        
+        noticeProcess;
+    }
+    free(tokens);
+}
+
 static int fparseFile(int fd, Game_t * game, Parser_t * parser)
 {
-    (void)game;
     FileReader_t *reader = FileReader_create(fd, 255);
     Token_t *tokens = NULL;
     int tokenCount = 0;
@@ -78,8 +88,11 @@ static int fparseFile(int fd, Game_t * game, Parser_t * parser)
         return 1;
     }
 
-    LinkedList_foreach(objDefs, (void*)&printObjDef);
+    ConvertDescriptionToObjects(objDefs, game);
 
+
+    tokens_destroy(tokens, tokenCount);
+    LinkedList_definedDestroy(objDefs, (void*)&ObjectDefinition_destroy);
     FileReader_destroy(reader);
     return 0;
 }

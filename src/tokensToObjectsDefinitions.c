@@ -102,6 +102,9 @@ LinkedList *tokensToObjectsDefinitions(const Token_t * tokens, int tokenCount)
         else if (tokens[i].type & TK_NAME) {
             name = tokens[i].content;
             current = readObjectContent(tokens, tokenCount, &i);
+            if (current == NULL) {
+                return NULL;
+            }
             current->name = name;
             definitions = LinkedList_push(definitions, current);
             if (definitions == NULL) {
@@ -115,4 +118,12 @@ LinkedList *tokensToObjectsDefinitions(const Token_t * tokens, int tokenCount)
     }
 
     return definitions;
+}
+
+
+void ObjectDefinition_destroy(ObjectDefinition_t *def)
+{
+    LinkedList_destroy(def->attributes);
+    noticeProcess;
+    free(def);
 }

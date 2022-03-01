@@ -15,3 +15,9 @@
     }
 
 #endif
+
+void warn(const char * warnMessage)
+{
+    printf("WARNING: %s\n", warnMessage);
+}
+

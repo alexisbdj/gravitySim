@@ -15,5 +15,6 @@ typedef struct {
 } ObjectDefinition_t;
 
 LinkedList *tokensToObjectsDefinitions(const Token_t * tokens, int tokenCount);
+void ObjectDefinition_destroy(ObjectDefinition_t *def);
 
 #endif

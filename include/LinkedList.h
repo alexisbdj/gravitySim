@@ -11,8 +11,10 @@ LinkedList * LinkedList_forcePush(LinkedList * list, void * data); // free exist
 
 void LinkedList_destroy(LinkedList * list);
 
+void LinkedList_definedDestroy(LinkedList * list, void (*d)(void * data));
+
 void LinkedList_append(LinkedList *a, LinkedList *b);
 
-void LinkedList_foreach(LinkedList *a, void (*fnc)(void *a));
+void LinkedList_foreach(LinkedList *a, void (*fnc)(void *a, void *param), void *param);
 
 #endif

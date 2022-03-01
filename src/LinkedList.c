@@ -42,6 +42,17 @@ void LinkedList_destroy(LinkedList * list)
     free(list);
 }
 
+void LinkedList_definedDestroy(LinkedList * list, void (*d)(void * data))
+{
+    if (list->data)
+        d(list->data);
+    if (list->next) {
+        LinkedList_definedDestroy(list->next, d);
+    }
+    free(list);
+}
+
+
 void LinkedList_append(LinkedList *a, LinkedList *b)
 {
     while (a->next)
@@ -49,10 +60,10 @@ void LinkedList_append(LinkedList *a, LinkedList *b)
     a->next = b;
 }
 
-void LinkedList_foreach(LinkedList *a, void (*fnc)(void *a))
+void LinkedList_foreach(LinkedList *a, void (*fnc)(void *a, void *param), void *param)
 {
     while (a) {
-        fnc(a->data);
+        fnc(a->data, param);
         a = a->next;
     }
 }

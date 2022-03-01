@@ -11,4 +11,5 @@
         #define printError(errorMessage) printError_(errorMessage)
     #endif
 
+    void warn(const char * warnMessage);
 #endif

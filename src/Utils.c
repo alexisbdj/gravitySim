@@ -16,13 +16,20 @@ char * binaryFlag(TokenFlag flag)
     return tmpBuffer;
 }
 
-static void printfAttribute(ObjAttribute_t *attr)
+static void printfAttribute(ObjAttribute_t *attr, void *param)
 {
+    (void)param;
     printf("\t-> %s = %s (%s)\n", attr->name, attr->value->content, binaryFlag(attr->value->type));
+
 }
 
-void printObjDef(ObjectDefinition_t *a)
+void printObjDef(ObjectDefinition_t *a, void *param)
 {
     printf("%s\n", a->name);
-    LinkedList_foreach(a->attributes, (void*)&printfAttribute);
+    LinkedList_foreach(a->attributes, (void*)&printfAttribute, param);
+}
+
+void noticeProcess_(const char * functionName, const char * fileName, int line)
+{
+    // printf("POINT : %s:%d -> %s\n", fileName, line, functionName);
 }

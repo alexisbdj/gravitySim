@@ -45,4 +45,6 @@ TokenFlag runValidators(Parser_t * parser, char * current, TokenFlag flags);
 
 Token_t * tokenize(Parser_t * parser, FileReader_t * reader, int *count);
 
+
+
 #endif
