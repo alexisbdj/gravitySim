@@ -39,7 +39,6 @@ Token_t * tokenize(Parser_t * parser, FileReader_t * reader, int *count)
             if (tmpFlag == 0) {
                 current[strlen(current) - 1] = 0;
                 if (strlen(current) > 0) {
-                    noticeProcess;
                     restart = 1;
                     tokenList = addToken(tokenList, count, current, flag);
                 }
@@ -53,6 +52,12 @@ Token_t * tokenize(Parser_t * parser, FileReader_t * reader, int *count)
                 flag = tmpFlag;
             }
         } while(restart);
+    }
+    if (current != NULL) {
+        if (strlen(current) > 0)
+            tokenList = addToken(tokenList, count, current, flag);
+        else
+            free(current);
     }
     return tokenList;
 }
