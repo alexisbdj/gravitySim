@@ -66,8 +66,6 @@ static void tokens_destroy(Token_t *tokens, int tokenCount)
 {
     for (int i = 0; i < tokenCount; i++) {
         free(tokens[i].content);
-        
-        noticeProcess;
     }
     free(tokens);
 }

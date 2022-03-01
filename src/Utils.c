@@ -31,5 +31,5 @@ void printObjDef(ObjectDefinition_t *a, void *param)
 
 void noticeProcess_(const char * functionName, const char * fileName, int line)
 {
-    // printf("POINT : %s:%d -> %s\n", fileName, line, functionName);
+    printf("POINT : %s:%d -> %s\n", fileName, line, functionName);
 }
