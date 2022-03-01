@@ -22,7 +22,8 @@ int applyGravity(Object_t * obj, ObjectList_t *list, __attribute__((unused)) flo
         Object_t * current = list->element;
         if (current != obj) {
             Vector3 force = calcAppliedForce(obj, current);
-            g = Vector3_addition(g, force);
+            if (!Vector3_isNan(force))
+                g = Vector3_addition(g, force);
         }
         list = list->next;
     }

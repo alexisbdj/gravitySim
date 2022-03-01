@@ -29,7 +29,7 @@ int camSetPosZ(Game_t *a, Token_t *token);
 int camSetTargetX(Game_t *a, Token_t *token);
 int camSetTargetY(Game_t *a, Token_t *token);
 int camSetTargetZ(Game_t *a, Token_t *token);
-
+int camSetUpAxe(Game_t *a, Token_t *token);
 
 // Obj attributes process
 int objSetPosX(DefConversionProcess *process, Token_t *token);

@@ -4,8 +4,7 @@
 int camSetFovy(Game_t *a, Token_t *token)
 {
     float value;
-    noticeProcess;
-    if (getTokenAsFloat(token, &value) == 0) {
+        if (getTokenAsFloat(token, &value) == 0) {
         a->cam3d.fovy = value;
     }
     else {
@@ -17,8 +16,7 @@ int camSetFovy(Game_t *a, Token_t *token)
 int camSetPosX(Game_t *a, Token_t *token)
 {
     float value;
-    noticeProcess;
-    if (getTokenAsFloat(token, &value) == 0) {
+        if (getTokenAsFloat(token, &value) == 0) {
         a->cam3d.position.x = value;
     }
     else {
@@ -30,8 +28,7 @@ int camSetPosX(Game_t *a, Token_t *token)
 int camSetPosY(Game_t *a, Token_t *token)
 {
     float value;
-    noticeProcess;
-    if (getTokenAsFloat(token, &value) == 0) {
+        if (getTokenAsFloat(token, &value) == 0) {
         a->cam3d.position.y = value;
     }
     else {
@@ -43,8 +40,7 @@ int camSetPosY(Game_t *a, Token_t *token)
 int camSetPosZ(Game_t *a, Token_t *token)
 {
     float value;
-    noticeProcess;
-    if (getTokenAsFloat(token, &value) == 0) {
+        if (getTokenAsFloat(token, &value) == 0) {
         a->cam3d.position.z = value;
     }
     else {
@@ -57,8 +53,7 @@ int camSetPosZ(Game_t *a, Token_t *token)
 int camSetTargetX(Game_t *a, Token_t *token)
 {
     float value;
-    noticeProcess;
-    if (getTokenAsFloat(token, &value) == 0) {
+        if (getTokenAsFloat(token, &value) == 0) {
         a->cam3d.target.x = value;
     }
     else {
@@ -70,8 +65,7 @@ int camSetTargetX(Game_t *a, Token_t *token)
 int camSetTargetY(Game_t *a, Token_t *token)
 {
     float value;
-    noticeProcess;
-    if (getTokenAsFloat(token, &value) == 0) {
+        if (getTokenAsFloat(token, &value) == 0) {
         a->cam3d.target.y = value;
     }
     else {
@@ -83,12 +77,18 @@ int camSetTargetY(Game_t *a, Token_t *token)
 int camSetTargetZ(Game_t *a, Token_t *token)
 {
     float value;
-    noticeProcess;
-    if (getTokenAsFloat(token, &value) == 0) {
+        if (getTokenAsFloat(token, &value) == 0) {
         a->cam3d.target.z = value;
     }
     else {
         return 1;
     }
+    return 0;
+}
+
+int camSetUpAxe(Game_t *a, Token_t *token)
+{
+    (void)a;
+    (void)token;
     return 0;
 }

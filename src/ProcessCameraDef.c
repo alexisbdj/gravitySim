@@ -1,6 +1,7 @@
 #include <string.h>
 #include "DescriptionToObjects.h"
 #include "Algorithm.h"
+#include "ErrorHandling.h"
 
 static const fncPtr attrProcessList[] = {
     {"fovy", (void*) &camSetFovy},
@@ -10,9 +11,9 @@ static const fncPtr attrProcessList[] = {
     {"targetX", (void*) &camSetTargetX},
     {"targetY", (void*) &camSetTargetY},
     {"targetZ", (void*) &camSetTargetZ},
-    //TODO up attribute
+    {"up", (void*) &camSetUpAxe},
 };
-static const int processListCount = 7;
+static const int processListCount = 8;
 
 static void ProcessCameraAttribute(ObjAttribute_t *attr, DefConversionProcess *process)
 {
@@ -22,6 +23,7 @@ static void ProcessCameraAttribute(ObjAttribute_t *attr, DefConversionProcess *p
     input.name = attr->name;
 
     if (switchFncFromArray(processListCount, attrProcessList, &input) != 0) {
+        printError("unknown camera attribute");
         process->success = 0;
     }
 }

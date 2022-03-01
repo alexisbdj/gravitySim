@@ -1,5 +1,6 @@
 #include "DescriptionToObjects.h"
 #include "Algorithm.h"
+#include "ErrorHandling.h"
 
 static const fncPtr attrProcessList[] = {
     {"posX", (void*) &objSetPosX},
@@ -12,7 +13,7 @@ static const fncPtr attrProcessList[] = {
     {"mass", (void*) &objSetMass},
     {"color", (void*) &objSetColor},
 };
-static const int processListCount = 7;
+static const int processListCount = 9;
 
 static void ProcessObjAttribute(ObjAttribute_t *attr, DefConversionProcess *process)
 {
@@ -22,6 +23,7 @@ static void ProcessObjAttribute(ObjAttribute_t *attr, DefConversionProcess *proc
     input.name = attr->name;
 
     if (switchFncFromArray(processListCount, attrProcessList, &input) != 0) {
+        printError("unknown object attribute");
         process->success = 0;
     }
 }

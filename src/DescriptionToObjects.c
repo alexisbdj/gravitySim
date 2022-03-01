@@ -1,6 +1,7 @@
 #include <string.h>
 #include "DescriptionToObjects.h"
 #include "Utils.h"
+#include "ErrorHandling.h"
 
 int ConvertDescriptionToObjects(LinkedList *objDefs, Game_t *game)
 {
@@ -17,9 +18,13 @@ int ConvertDescriptionToObjects(LinkedList *objDefs, Game_t *game)
 void ProcessDescription(ObjectDefinition_t *def, DefConversionProcess *process)
 {
     if (strcmp(def->name, "camera") == 0) {
-        ProcessCameraDefinition(def, process);
+        if (ProcessCameraDefinition(def, process) != 0) {
+            process->success = 0;
+        }
     }
     else {
-        ProcessRegularDefinition(def, process);
+        if (ProcessRegularDefinition(def, process) != 0) {
+            process->success = 0;
+        }
     }
 }

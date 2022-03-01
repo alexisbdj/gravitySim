@@ -93,8 +93,7 @@ int setColorByName(DefConversionProcess *process, char * name)
 int objSetColor(DefConversionProcess *process, Token_t *token)
 {
     char * value;
-    noticeProcess;
-    if (getTokenAsName(token, &value) == 0) {
+        if (getTokenAsName(token, &value) == 0) {
         return setColorByName(process, value);
     }
     else {

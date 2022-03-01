@@ -76,6 +76,8 @@ static int fparseFile(int fd, Game_t * game, Parser_t * parser)
     Token_t *tokens = NULL;
     int tokenCount = 0;
     LinkedList *objDefs;
+    int convertResult = 0;
+
     if (reader == NULL) {
         printError("failed to init reader");
         return 1;
@@ -85,14 +87,13 @@ static int fparseFile(int fd, Game_t * game, Parser_t * parser)
     if (objDefs == NULL) {
         return 1;
     }
-
-    ConvertDescriptionToObjects(objDefs, game);
+    convertResult = ConvertDescriptionToObjects(objDefs, game);
 
 
     tokens_destroy(tokens, tokenCount);
     LinkedList_definedDestroy(objDefs, (void*)&ObjectDefinition_destroy);
     FileReader_destroy(reader);
-    return 0;
+    return convertResult;
 }
 
 int parseFile(const char * filePath, Game_t * game)

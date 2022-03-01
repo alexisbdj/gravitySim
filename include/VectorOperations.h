@@ -14,4 +14,6 @@ Vector3 getDirection(const Vector3 a, const Vector3 b);
 float getLength(const Vector3 a);
 float getDistance(const Vector3 a, const Vector3 b);
 
+int Vector3_isNan(const Vector3 a);
+
 #endif

@@ -17,4 +17,6 @@ void LinkedList_append(LinkedList *a, LinkedList *b);
 
 void LinkedList_foreach(LinkedList *a, void (*fnc)(void *a, void *param), void *param);
 
+int LinkedList_count(LinkedList *a);
+
 #endif

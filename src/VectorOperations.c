@@ -42,3 +42,8 @@ float getDistance(const Vector3 a, const Vector3 b)
 {
     return getLength(Vector3_substraction(b, a));
 }
+
+int Vector3_isNan(const Vector3 a)
+{
+    return (a.x != a.x || a.y != a.y || a.z != a.z);
+}

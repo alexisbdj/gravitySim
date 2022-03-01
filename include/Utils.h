@@ -9,6 +9,8 @@ void printVectorValue(const Vector3 a);
 char * binaryFlag(TokenFlag flag);
 void printObjDef(ObjectDefinition_t *a, void *param);
 
+void printObjStatus(Object_t *a, void *param);
+
 void noticeProcess_(const char * functionName, const char * fileName, int line);
 
 #define noticeProcess noticeProcess_(__FUNCTION__, __FILE__, __LINE__)

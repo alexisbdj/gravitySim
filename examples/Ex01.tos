@@ -39,7 +39,7 @@ a {
 }
 
 b {
-    posX = 60
+    posX = -60
     posY = 0
     posZ = 0
     velocityX = 0
@@ -48,4 +48,16 @@ b {
     radius = 1.5
     mass = 30
     color = PURPLE
+}
+
+c {
+    posX = 0
+    posY = 0
+    posZ = 60
+    velocityX = 0
+    velocityY = 50
+    velocityZ = 0
+    radius = 1.5
+    mass = 30
+    color = RED
 }

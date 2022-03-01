@@ -67,3 +67,13 @@ void LinkedList_foreach(LinkedList *a, void (*fnc)(void *a, void *param), void *
         a = a->next;
     }
 }
+
+int LinkedList_count(LinkedList *a)
+{
+    int i = 0;
+    while (a != NULL) {
+        a = a->next;
+        i++;
+    }
+    return i;
+}
