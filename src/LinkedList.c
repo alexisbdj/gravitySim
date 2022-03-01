@@ -34,6 +34,8 @@ LinkedList * LinkedList_forcePush(LinkedList * list, void * data)
 
 void LinkedList_destroy(LinkedList * list)
 {
+    if (list == NULL)
+        return;
     if (list->data)
         free(list->data);
     if (list->next) {
@@ -44,6 +46,8 @@ void LinkedList_destroy(LinkedList * list)
 
 void LinkedList_definedDestroy(LinkedList * list, void (*d)(void * data))
 {
+    if (list == NULL)
+        return;
     if (list->data)
         d(list->data);
     if (list->next) {

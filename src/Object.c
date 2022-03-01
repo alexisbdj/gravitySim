@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 #include "Object.h"
 #include "ObjectList.h"
 #include "ErrorHandling.h"
@@ -18,12 +19,15 @@ Object_t *Object_create(Vector3 pos, float radius, Color color)
     obj->force = (Vector3){0, 0, 0};
     obj->acceleration = (Vector3){0, 0, 0};
     obj->mass = 30;
+    obj->name = NULL;
 
     return obj;
 }
 
 void Object_destroy(Object_t *obj)
 {
+    if (obj->name != NULL)
+        free(obj->name);
     free(obj);
 }
 

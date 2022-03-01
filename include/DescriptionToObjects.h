@@ -6,9 +6,18 @@
 #include "ObjectDefinition.h"
 
 typedef struct {
+    Object_t * subject;
+    char * targetName;
+    Vector3 direction;
+} PostCreateCalcul;
+
+typedef struct {
     int success;
     Game_t *game;
     Object_t *currentWorkingObject;
+    char * currentObjName;
+    PostCreateCalcul *currentCalc;
+    LinkedList * postCreateCalculs;
 } DefConversionProcess;
 
 int ConvertDescriptionToObjects(LinkedList *objDefs, Game_t *game);
@@ -20,6 +29,8 @@ int ProcessRegularDefinition(ObjectDefinition_t *def, DefConversionProcess *proc
 int getTokenAsInt(Token_t *token, int *dest);
 int getTokenAsFloat(Token_t *token, float *dest);
 int getTokenAsName(Token_t *token, char **dest);
+
+PostCreateCalcul *newPostCalcul(DefConversionProcess *process);
 
 // Camera attributes process
 int camSetFovy(Game_t *a, Token_t *token);
@@ -41,5 +52,11 @@ int objSetVelocityZ(DefConversionProcess *process, Token_t *token);
 int objSetRadius(DefConversionProcess *process, Token_t *token);
 int objSetMass(DefConversionProcess *process, Token_t *token);
 int objSetColor(DefConversionProcess *process, Token_t *token);
+int objCircularOrbital(DefConversionProcess *process, Token_t *token);
+int objOrbitDirX(DefConversionProcess *process, Token_t *token);
+int objOrbitDirY(DefConversionProcess *process, Token_t *token);
+int objOrbitDirZ(DefConversionProcess *process, Token_t *token);
+
+void processPostCalcul(PostCreateCalcul *task, DefConversionProcess *process);
 
 #endif

@@ -61,3 +61,29 @@ c {
     mass = 30
     color = RED
 }
+
+d {
+    posX = 120
+    posY = 0
+    posZ = 0
+    mass = 392e10
+    radius = 1.5
+    color = GREEN
+    circularOrbit = sun
+    orbitDirX = 0
+    orbitDirY = 0
+    orbitDirZ = 1
+}
+
+dMoon {
+    posX = 124
+    posY = 0
+    posZ = 0
+    mass = 1
+    radius = 1
+    color = GOLD
+    circularOrbit = d
+    orbitDirX = 0
+    orbitDirY = 1
+    orbitDirZ = 0
+}

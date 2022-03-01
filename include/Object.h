@@ -11,6 +11,7 @@ typedef struct {
     float radius;   //m
     float mass;     //kg
     Color color;
+    char *name;
 } Object_t;
 
 Object_t *Object_create(Vector3 pos, float radius, Color color);

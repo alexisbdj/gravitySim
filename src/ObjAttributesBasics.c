@@ -4,7 +4,7 @@
 int objSetPosX(DefConversionProcess *process, Token_t *token)
 {
     float value;
-        if (getTokenAsFloat(token, &value) == 0) {
+    if (getTokenAsFloat(token, &value) == 0) {
         process->currentWorkingObject->pos.x = value;
     }
     else {
@@ -17,7 +17,7 @@ int objSetPosX(DefConversionProcess *process, Token_t *token)
 int objSetPosY(DefConversionProcess *process, Token_t *token)
 {
     float value;
-        if (getTokenAsFloat(token, &value) == 0) {
+    if (getTokenAsFloat(token, &value) == 0) {
         process->currentWorkingObject->pos.y = value;
     }
     else {
@@ -29,7 +29,7 @@ int objSetPosY(DefConversionProcess *process, Token_t *token)
 int objSetPosZ(DefConversionProcess *process, Token_t *token)
 {
     float value;
-        if (getTokenAsFloat(token, &value) == 0) {
+    if (getTokenAsFloat(token, &value) == 0) {
         process->currentWorkingObject->pos.z = value;
     }
     else {
@@ -41,7 +41,7 @@ int objSetPosZ(DefConversionProcess *process, Token_t *token)
 int objSetVelocityX(DefConversionProcess *process, Token_t *token)
 {
     float value;
-        if (getTokenAsFloat(token, &value) == 0) {
+    if (getTokenAsFloat(token, &value) == 0) {
         process->currentWorkingObject->velocity.x = value;
     }
     else {
@@ -53,7 +53,7 @@ int objSetVelocityX(DefConversionProcess *process, Token_t *token)
 int objSetVelocityY(DefConversionProcess *process, Token_t *token)
 {
     float value;
-        if (getTokenAsFloat(token, &value) == 0) {
+    if (getTokenAsFloat(token, &value) == 0) {
         process->currentWorkingObject->velocity.y = value;
     }
     else {
@@ -65,7 +65,7 @@ int objSetVelocityY(DefConversionProcess *process, Token_t *token)
 int objSetVelocityZ(DefConversionProcess *process, Token_t *token)
 {
     float value;
-        if (getTokenAsFloat(token, &value) == 0) {
+    if (getTokenAsFloat(token, &value) == 0) {
         process->currentWorkingObject->velocity.z = value;
     }
     else {

@@ -37,6 +37,10 @@ void noticeProcess_(const char * functionName, const char * fileName, int line)
 void printObjStatus(Object_t *a, void *param)
 {
     (void)param;
+    char *displayName = "undefined";
+    if (a->name != NULL)
+        displayName = a->name;
+    printf("name: %s\n", displayName);
     printf("pos: ");
     printVectorValue(a->pos);
     printf("velocity: ");

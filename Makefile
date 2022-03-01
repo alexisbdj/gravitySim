@@ -26,6 +26,8 @@ SRC	=	./src/main.c						\
 		./src/GetTokenValue.c				\
 		./src/ObjAttributesBasics.c			\
 		./src/ObjColorAttribute.c			\
+		./src/OrbitalVelocityCalculs.c		\
+		./src/AdvancedObjAttributes.c		\
 		
 
 OBJ	=	$(SRC:.c=.o)
