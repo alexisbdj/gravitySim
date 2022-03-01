@@ -24,6 +24,8 @@ SRC	=	./src/main.c						\
 		./src/Algorithm.c					\
 		./src/CameraAttributesBasics.c		\
 		./src/GetTokenValue.c				\
+		./src/ObjAttributesBasics.c			\
+		./src/ObjColorAttribute.c			\
 		
 
 OBJ	=	$(SRC:.c=.o)

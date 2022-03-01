@@ -26,7 +26,7 @@ ObjectList_t *ObjectList_push(ObjectList_t *list, Object_t *element)
     return list;
 }
 
-ObjectList_t *ObjectList_create(ObjectList_t *list, Vector3 pos, float radius, Color color)
+ObjectList_t *ObjectList_quickCreate(ObjectList_t *list, Vector3 pos, float radius, Color color)
 {
     Object_t *obj = Object_create(pos, radius, color);
     
@@ -39,6 +39,24 @@ ObjectList_t *ObjectList_create(ObjectList_t *list, Vector3 pos, float radius, C
         Object_destroy(obj);
         return NULL;
     }
+    return list;
+}
+
+
+ObjectList_t *ObjectList_create(ObjectList_t *list, Object_t **newObjPtr)
+{
+    Object_t *obj = Object_create((Vector3){0, 0, 0}, 1, BLUE);
+    
+    if (obj == NULL) {
+        printError("malloc failed");
+        return NULL;
+    }
+    list = ObjectList_push(list, obj);
+    if (list == NULL) {
+        Object_destroy(obj);
+        return NULL;
+    }
+    *newObjPtr = obj;
     return list;
 }
 

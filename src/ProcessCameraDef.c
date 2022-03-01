@@ -2,7 +2,7 @@
 #include "DescriptionToObjects.h"
 #include "Algorithm.h"
 
-const fncPtr attrProcessList[] = {
+static const fncPtr attrProcessList[] = {
     {"fovy", (void*) &camSetFovy},
     {"posX", (void*) &camSetPosX},
     {"posY", (void*) &camSetPosY},
@@ -12,9 +12,9 @@ const fncPtr attrProcessList[] = {
     {"targetZ", (void*) &camSetTargetZ},
     //TODO up attribute
 };
-const int processListCount = 7;
+static const int processListCount = 7;
 
-static void ProcessCameraAttribute(ObjAttribute_t *attr, DefConvertionProcess *process)
+static void ProcessCameraAttribute(ObjAttribute_t *attr, DefConversionProcess *process)
 {
     fncSwitchInput input;
     input.a = process->game;
@@ -26,7 +26,7 @@ static void ProcessCameraAttribute(ObjAttribute_t *attr, DefConvertionProcess *p
     }
 }
 
-int ProcessCameraDefinition(ObjectDefinition_t *def, DefConvertionProcess *process)
+int ProcessCameraDefinition(ObjectDefinition_t *def, DefConversionProcess *process)
 {
     LinkedList_foreach(def->attributes, (void*) ProcessCameraAttribute, process);
     return 0;

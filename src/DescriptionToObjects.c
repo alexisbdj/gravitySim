@@ -4,7 +4,7 @@
 
 int ConvertDescriptionToObjects(LinkedList *objDefs, Game_t *game)
 {
-    DefConvertionProcess process;
+    DefConversionProcess process;
     process.game = game;
     process.success = 1;
 
@@ -14,9 +14,12 @@ int ConvertDescriptionToObjects(LinkedList *objDefs, Game_t *game)
     return 0;
 }
 
-void ProcessDescription(ObjectDefinition_t *def, DefConvertionProcess *process)
+void ProcessDescription(ObjectDefinition_t *def, DefConversionProcess *process)
 {
     if (strcmp(def->name, "camera") == 0) {
         ProcessCameraDefinition(def, process);
+    }
+    else {
+        ProcessRegularDefinition(def, process);
     }
 }

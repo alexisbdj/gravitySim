@@ -53,27 +53,27 @@ static System_t *Game_initSystem()
 
 static ObjectList_t *Game_initObjects()
 {
-    ObjectList_t * list = ObjectList_create(NULL, (Vector3){0,0,0}, 6, YELLOW);
+    ObjectList_t * list = ObjectList_quickCreate(NULL, (Vector3){0,0,0}, 6, YELLOW);
     ObjectList_t * origin = list;
     if (origin == NULL) {
         printError("ObjectList init failed");
         return NULL;
     }
-    list = ObjectList_create(list, (Vector3){60,0,0}, 1.5, BLUE);
+    list = ObjectList_quickCreate(list, (Vector3){60,0,0}, 1.5, BLUE);
     if (list == NULL) {
         printError("ObjectList init failed");
         ObjectList_destroy(origin);
         return NULL;
     }
 
-    list = ObjectList_create(list, (Vector3){-60,0,0}, 1.5, PURPLE);
+    list = ObjectList_quickCreate(list, (Vector3){-60,0,0}, 1.5, PURPLE);
     if (list == NULL) {
         printError("ObjectList init failed");
         ObjectList_destroy(origin);
         return NULL;
     }
 
-    list = ObjectList_create(list, (Vector3){120,0,0}, 1.5, GREEN);
+    list = ObjectList_quickCreate(list, (Vector3){120,0,0}, 1.5, GREEN);
     if (list == NULL) {
         printError("ObjectList init failed");
         ObjectList_destroy(origin);
@@ -92,6 +92,7 @@ Game_t *Game_create(const char * descriptorPath)
     }
 
     if (parseFile(descriptorPath, game) != 0) {
+        free(game);
         printError("failed to parse descriptor file");
         return NULL;
     }
