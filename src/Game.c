@@ -93,7 +93,7 @@ Game_t *Game_create(const char * descriptorPath)
     game->cam3d.projection = CAMERA_PERSPECTIVE;
 
 
-    InitWindow(screenWidth, screenHeight, "potit test");
+    InitWindow(screenWidth, screenHeight, "Gravity Sim");
 
     SetTargetFPS(60);
 
