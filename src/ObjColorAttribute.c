@@ -5,6 +5,7 @@
 
 int setColorByName(DefConversionProcess *process, char * name)
 {
+    // TODO unuglify
     if (strcmp(name, "LIGHTGRAY") == 0) {
         process->currentWorkingObject->color = LIGHTGRAY;
     }
